@@ -1,0 +1,29 @@
+{
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "lint": "eslint --ext .ts,.tsx app packages",
+    "format": "prettier --write --parser typescript \"{packages,app}/**/*.ts?(x)\"",
+    "serve": "serve"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "eslint",
+      "prettier --parser=typescript --write"
+    ]
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "devDependencies": {
+    "@atlaskit/eslint-plugin-design-system": "^4.0.1",
+    "@typescript-eslint/parser": "^5.8.0",
+    "eslint": "^7",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.1.1",
+    "typescript": "^4.0.0"
+  }
+}
