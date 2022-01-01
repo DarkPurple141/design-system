@@ -11,7 +11,7 @@ interface InlineProps {
 
 const Inline: FC<InlineProps> = ({ children, space, align }) => {
   return (
-    <Flex direction="row" gap={space} alignItems={align}>
+    <Flex direction="row" gap={space} alignItems={align} __debug="Inline">
       {children}
     </Flex>
   )

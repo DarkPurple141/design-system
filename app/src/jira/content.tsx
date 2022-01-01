@@ -3,7 +3,9 @@ import { jsx } from '@emotion/core'
 import Column from './components/column'
 import { Box, Inline, Stack } from '@ah/design-system'
 
+import Button from '@atlaskit/button'
 import Breadcrumbs, { BreadcrumbsItem } from '@atlaskit/breadcrumbs'
+import MoreIcon from '@atlaskit/icon/glyph/more'
 
 import PageHeader from '@atlaskit/page-header'
 import IssueCard from './components/issue-card'
@@ -25,8 +27,8 @@ const doneIssues = issuesWithIds.filter((issue) => issue.Status === 'Done')
 
 const Content = () => (
   <Box
-    inset="medium"
-    width={900}
+    inset={['large', 'xlarge']}
+    width="100%"
     __style={{
       margin: 'auto',
     }}
@@ -38,6 +40,11 @@ const Content = () => (
             <BreadcrumbsItem text="Project" key="Project" />
             <BreadcrumbsItem text="Acme" key="Acme" />
           </Breadcrumbs>
+        }
+        actions={
+          <Inline>
+            <Button iconBefore={<MoreIcon label="more" />} />
+          </Inline>
         }
       >
         ACME Board

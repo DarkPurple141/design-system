@@ -6,6 +6,7 @@ import Box from '../box'
 const Card: FC = ({ children }) => {
   return (
     <Box
+      __debug="Card"
       as="article"
       shadow="shadow.card"
       borderStyle="rounded"

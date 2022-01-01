@@ -1,9 +1,11 @@
+import { SPACING_SCALE } from '../spacing'
+
 export const TYPOPGRAPHY_SIZES = {
-  xsmall: '0.75rem',
-  small: '0.875rem',
-  medium: '1rem',
-  large: '1.5rem',
-  xlarge: '2rem',
+  xsmall: SPACING_SCALE.small,
+  small: SPACING_SCALE['small-medium'],
+  medium: SPACING_SCALE.medium,
+  large: SPACING_SCALE.large,
+  xlarge: SPACING_SCALE.xlarge,
 }
 
 export type TypographySize = keyof typeof TYPOPGRAPHY_SIZES

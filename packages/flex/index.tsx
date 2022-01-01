@@ -2,8 +2,9 @@
 import { type FC } from 'react'
 import { jsx, css } from '@emotion/core'
 import { Spacing, SPACING_SCALE } from '../spacing'
+import System, { SystemProps } from '../system'
 
-export interface FlexProps {
+export interface FlexProps extends Pick<SystemProps, 'testId' | '__debug'> {
   gap?: Spacing
   direction?: 'row' | 'column'
   hasScrollY?: boolean
@@ -23,12 +24,15 @@ const Flex: FC<FlexProps> = ({
   children,
   gap,
   direction,
-  as: Component = 'div',
+  as = 'div',
+  __debug,
   justifyContent,
   alignItems,
 }) => {
   return (
-    <Component
+    <System
+      as={as}
+      __debug={__debug}
       css={[
         baseStyles,
         gap && css({ gap: SPACING_SCALE[gap] }),
@@ -38,7 +42,7 @@ const Flex: FC<FlexProps> = ({
       ]}
     >
       {children}
-    </Component>
+    </System>
   )
 }
 

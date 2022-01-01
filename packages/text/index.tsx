@@ -2,6 +2,7 @@
 import { type FC } from 'react'
 import { css, jsx } from '@emotion/core'
 import { Color } from '../color'
+import System from '../system'
 import { TYPOPGRAPHY_SIZES, type TypographySize } from '../sizing'
 import { token } from '@atlaskit/tokens'
 
@@ -37,13 +38,15 @@ const baseStyles = css({
 
 const Text: FC<TextProps> = ({
   children,
-  as: Component = 'span',
+  as = 'span',
   color,
   size,
   transform,
 }) => {
   return (
-    <Component
+    <System
+      __debug="Text"
+      as={as}
       css={[
         baseStyles,
         transform && css({ textTransform: transform }),
@@ -52,7 +55,7 @@ const Text: FC<TextProps> = ({
       ]}
     >
       {children}
-    </Component>
+    </System>
   )
 }
 

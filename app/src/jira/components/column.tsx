@@ -13,7 +13,9 @@ const Column: FC<ColumnProps> = ({ name, children }) => (
     inset={['medium', 'small']}
     backgroundColor="color.background.sunken"
     borderStyle="rounded"
-    __style={{ minHeight: '90vh', width: 300 }}
+    minHeight="90vh"
+    minWidth={280}
+    maxWidth={280}
   >
     <Stack space="medium">
       <Text

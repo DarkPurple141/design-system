@@ -1,32 +1,24 @@
 /** @jsx jsx */
-import {
-  type ElementType,
-  type ReactNode,
-  forwardRef,
-  CSSProperties,
-} from 'react'
+import { type ReactNode, forwardRef, CSSProperties } from 'react'
 import { token } from '@atlaskit/tokens'
 import { jsx, css } from '@emotion/core'
 import { Color, Shadow } from '../color'
 import { Spacing, SPACING_SCALE } from '../spacing'
+import System, { SystemProps } from '../system'
 
-interface DimensionProps {
-  width?: CSSProperties['width']
-  minWidth?: CSSProperties['minWidth']
-  maxWidth?: CSSProperties['maxWidth']
-  height?: CSSProperties['height']
-  minHeight?: CSSProperties['minHeight']
-  maxHeight?: CSSProperties['maxHeight']
-}
+type DimensionProps = Pick<
+  CSSProperties,
+  'width' | 'maxWidth' | 'minWidth' | 'height' | 'minHeight' | 'maxHeight'
+>
 
-interface BoxProps extends DimensionProps {
-  as?: ElementType
+interface BoxProps extends DimensionProps, SystemProps {
   children?: ReactNode
   backgroundColor?: Color
   color?: Color
   inset?: Spacing | [Spacing, Spacing]
   shadow?: Shadow
   borderStyle?: 'rounded' | 'circle'
+  // TODO Revisit?
   __style?: CSSProperties
 }
 
@@ -37,7 +29,7 @@ const baseStyles = css({
 const Box = forwardRef<HTMLElement, BoxProps>(
   (
     {
-      as: Component = 'div',
+      as = 'div',
       backgroundColor,
       color,
       inset,
@@ -45,13 +37,18 @@ const Box = forwardRef<HTMLElement, BoxProps>(
       borderStyle,
       width,
       height,
+      minHeight,
+      minWidth,
+      maxHeight,
+      maxWidth,
       __style,
       ...props
     },
     ref
   ) => {
     return (
-      <Component
+      <System
+        as={as}
         css={[
           baseStyles,
           borderStyle &&
@@ -67,7 +64,15 @@ const Box = forwardRef<HTMLElement, BoxProps>(
                   : `${SPACING_SCALE[inset[0]]} ${SPACING_SCALE[inset[1]]}`,
             }),
         ]}
-        style={{ width, height, ...__style }}
+        style={{
+          width,
+          height,
+          minHeight,
+          minWidth,
+          maxHeight,
+          maxWidth,
+          ...__style,
+        }}
         ref={ref}
         {...props}
       />

@@ -36,7 +36,7 @@ const IssueCard: FC<IssueCardProps> = ({
   const Priority = priorityIcons[priority]
   return (
     <Card>
-      <Stack space="medium">
+      <Stack space="small">
         <Text>{children}</Text>
         {tags && (
           <Inline space="xsmall">
