@@ -4,14 +4,22 @@ import { jsx } from '@emotion/core'
 import { Spacing } from '../spacing'
 import Flex, { FlexProps } from '../flex'
 
-interface InlineProps {
+interface BaseProps {
   space?: Spacing
   align?: FlexProps['alignItems']
 }
 
-const Inline: FC<InlineProps> = ({ children, space, align }) => {
+type InlineProps = Pick<FlexProps, 'as'> & BaseProps
+
+const Inline: FC<InlineProps> = ({ children, space, align, as }) => {
   return (
-    <Flex direction="row" gap={space} alignItems={align} __debug="Inline">
+    <Flex
+      direction="row"
+      gap={space}
+      alignItems={align}
+      __debug="Inline"
+      as={as}
+    >
       {children}
     </Flex>
   )

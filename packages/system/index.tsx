@@ -33,7 +33,7 @@ const debugStyle = css({
     height: '100%',
     content: `attr(data-debug)`,
     opacity: 0,
-    border: '1px dashed',
+    border: '2px dashed',
   },
   ':focus': {
     outline: 'none',
@@ -51,7 +51,7 @@ const System = forwardRef<unknown, SystemProps & HTMLAttributes<HTMLElement>>(
     return (
       <Component
         data-testid={testId}
-        tabIndex={__debug && 0}
+        tabIndex={process.env.DEBUG && __debug && 0}
         data-debug={process.env.DEBUG && __debug}
         css={process.env.DEBUG && __debug && debugStyle}
         ref={ref}

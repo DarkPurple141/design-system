@@ -21,6 +21,7 @@ const priorityIcons = {
 
 interface IssueCardProps {
   ticket: string
+  status: string
   priority: keyof typeof priorityIcons
   tags?: readonly string[]
 }
@@ -32,6 +33,7 @@ const IssueCard: FC<IssueCardProps> = ({
   priority,
   children,
   tags,
+  status,
 }) => {
   const Priority = priorityIcons[priority]
   return (
@@ -39,7 +41,7 @@ const IssueCard: FC<IssueCardProps> = ({
       <Stack space="small">
         <Text>{children}</Text>
         {tags && (
-          <Inline space="xsmall">
+          <Inline space="base">
             {tags.map((tag) => {
               const hash = tag.charCodeAt(0) % tagColors.length
               return <SimpleTag color={tagColors[hash]} key={tag} text={tag} />
@@ -47,15 +49,19 @@ const IssueCard: FC<IssueCardProps> = ({
           </Inline>
         )}
         <Flex justifyContent="space-between" alignItems="center">
-          <Text
-            size="xsmall"
-            color="color.text.mediumEmphasis"
-            transform="uppercase"
-          >
-            {ticket}
-          </Text>
-          <Inline space="xsmall" align="center">
-            <Priority size="small" label={priority} />
+          <Inline space="base" align="center">
+            <Text
+              size="xsmall"
+              weight="bold"
+              color="color.text.lowEmphasis"
+              transform="uppercase"
+              decoration={status === 'Done' ? 'line-through' : undefined}
+            >
+              {ticket}
+            </Text>
+          </Inline>
+          <Inline space="base" align="center">
+            <Priority label={priority} />
             <Avatar size="small" />
           </Inline>
         </Flex>

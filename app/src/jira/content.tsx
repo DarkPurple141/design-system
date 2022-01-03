@@ -26,13 +26,7 @@ const inProgressIssues = issuesWithIds.filter(
 const doneIssues = issuesWithIds.filter((issue) => issue.Status === 'Done')
 
 const Content = () => (
-  <Box
-    inset={['large', 'xlarge']}
-    width="100%"
-    __style={{
-      margin: 'auto',
-    }}
-  >
+  <Box inset={['large', 'xlarge']}>
     <Stack space="medium">
       <PageHeader
         breadcrumbs={
@@ -49,7 +43,7 @@ const Content = () => (
       >
         ACME Board
       </PageHeader>
-      <Inline space="medium">
+      <Inline space="small-medium" as="ul">
         <Column name={`To do ${todoIssues.length}`}>
           {todoIssues.map((issue) => (
             <IssueCard
@@ -57,6 +51,7 @@ const Content = () => (
               priority={issue.Priority}
               ticket={issue.id}
               tags={issue.Labels}
+              status={issue.Status}
             >
               {issue.Summary}
             </IssueCard>
@@ -69,6 +64,7 @@ const Content = () => (
               priority={issue.Priority}
               ticket={issue.id}
               tags={issue.Labels}
+              status={issue.Status}
             >
               {issue.Summary}
             </IssueCard>
@@ -81,6 +77,7 @@ const Content = () => (
               priority={issue.Priority}
               ticket={issue.id}
               tags={issue.Labels}
+              status={issue.Status}
             >
               {issue.Summary}
             </IssueCard>

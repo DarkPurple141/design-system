@@ -41,6 +41,7 @@ const Box = forwardRef<HTMLElement, BoxProps>(
       minWidth,
       maxHeight,
       maxWidth,
+      testId,
       __style,
       ...props
     },

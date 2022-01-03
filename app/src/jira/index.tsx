@@ -19,6 +19,7 @@ import {
   LinkItem,
   Section,
   NavigationHeader,
+  NavigationContent,
 } from '@atlaskit/side-navigation'
 import BacklogIcon from '@atlaskit/icon/glyph/backlog'
 import RoadmapIcon from '@atlaskit/icon/glyph/roadmap'
@@ -26,8 +27,8 @@ import BoardIcon from '@atlaskit/icon/glyph/board'
 import CodeIcon from '@atlaskit/icon/glyph/code'
 import DeployIcon from '@atlaskit/icon/glyph/upload'
 import OnCallIcon from '@atlaskit/icon/glyph/hipchat/dial-out'
-import { Box } from '@ah/design-system'
 import { Skeleton } from '@atlaskit/icon'
+import { Box, Text } from '@ah/design-system'
 import Body from './content'
 
 const App = () => (
@@ -48,31 +49,41 @@ const App = () => (
     <Content>
       <LeftSidebar>
         <SideNavigation label="Project navigation" testId="side-navigation">
-          <Box inset={['none', 'medium']}>
+          <Box inset={['none', 'small-medium']}>
             <NavigationHeader>
               <LinkItem
                 iconBefore={<Skeleton />}
                 description="Software project"
               >
-                ACME
+                <Text weight="bold" color="color.text.mediumEmphasis">
+                  ACME
+                </Text>
               </LinkItem>
             </NavigationHeader>
-            <Section title="Planning">
-              <LinkItem iconBefore={<RoadmapIcon label="" />}>Roadmap</LinkItem>
-              <LinkItem iconBefore={<BacklogIcon label="" />}>Backlog</LinkItem>
-              <LinkItem isSelected iconBefore={<BoardIcon label="" />}>
-                Board
-              </LinkItem>
-            </Section>
-            <Section title="Development">
-              <LinkItem iconBefore={<CodeIcon label="" />}>Code</LinkItem>
-            </Section>
-            <Section title="Operations">
-              <LinkItem iconBefore={<DeployIcon label="" />}>
-                Deployments
-              </LinkItem>
-              <LinkItem iconBefore={<OnCallIcon label="" />}>On-call</LinkItem>
-            </Section>
+            <NavigationContent>
+              <Section title="Planning">
+                <LinkItem iconBefore={<RoadmapIcon label="" />}>
+                  Roadmap
+                </LinkItem>
+                <LinkItem iconBefore={<BacklogIcon label="" />}>
+                  Backlog
+                </LinkItem>
+                <LinkItem isSelected iconBefore={<BoardIcon label="" />}>
+                  Board
+                </LinkItem>
+              </Section>
+              <Section title="Development">
+                <LinkItem iconBefore={<CodeIcon label="" />}>Code</LinkItem>
+              </Section>
+              <Section title="Operations">
+                <LinkItem iconBefore={<DeployIcon label="" />}>
+                  Deployments
+                </LinkItem>
+                <LinkItem iconBefore={<OnCallIcon label="" />}>
+                  On-call
+                </LinkItem>
+              </Section>
+            </NavigationContent>
           </Box>
         </SideNavigation>
       </LeftSidebar>

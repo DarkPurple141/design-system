@@ -25,7 +25,7 @@ const Column: FC<ColumnProps> = ({ name, children }) => (
       >
         {name}
       </Text>
-      <Stack space="small">{children}</Stack>
+      <Stack space="xsmall">{children}</Stack>
     </Stack>
   </Box>
 )

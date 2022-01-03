@@ -10,11 +10,13 @@ export interface FlexProps extends Pick<SystemProps, 'testId' | '__debug'> {
   hasScrollY?: boolean
   justifyContent?: 'space-between' | 'space-evenly' | 'space-around' | 'center'
   alignItems?: 'flex-start' | 'flex-end' | 'center' | 'baseline'
-  as?: 'div' | 'ul'
+  as?: 'div' | 'ul' | 'ol'
 }
 
 const baseStyles = css({
   display: 'flex',
+  margin: 0,
+  padding: 0,
   '& > *': {
     margin: `0 !important`,
   },

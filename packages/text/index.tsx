@@ -26,9 +26,11 @@ type TextColor = Extract<
 
 interface TextProps {
   transform?: 'uppercase' | 'capitalize'
+  decoration?: 'line-through'
   as?: 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span'
   color?: TextColor
   size?: TypographySize
+  weight?: keyof typeof fontWeight
 }
 
 const baseStyles = css({
@@ -36,12 +38,21 @@ const baseStyles = css({
   fontSize: TYPOPGRAPHY_SIZES.small,
 })
 
+const fontWeight = {
+  bold: css({
+    fontWeight: 600,
+  }),
+  bolder: css({ fontWeight: 800 }),
+}
+
 const Text: FC<TextProps> = ({
   children,
   as = 'span',
   color,
   size,
   transform,
+  decoration,
+  weight,
 }) => {
   return (
     <System
@@ -52,6 +63,8 @@ const Text: FC<TextProps> = ({
         transform && css({ textTransform: transform }),
         size && css({ fontSize: TYPOPGRAPHY_SIZES[size] }),
         color && css({ color: token(color) }),
+        decoration && css({ textDecoration: decoration }),
+        weight && fontWeight[weight],
       ]}
     >
       {children}
