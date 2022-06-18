@@ -24,7 +24,7 @@ type TextColor = Extract<
   | 'color.text.disabled'
 >
 
-interface TextProps {
+export interface TextProps {
   transform?: 'uppercase' | 'capitalize'
   decoration?: 'line-through'
   as?: 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span'

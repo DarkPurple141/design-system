@@ -7,6 +7,7 @@
     "start": "parcel"
   },
   "devDependencies": {
+    "@atlaskit/eslint-plugin-design-system": "^4.6.0",
     "parcel": "latest"
   },
   "dependencies": {
@@ -25,7 +26,7 @@
     "@atlaskit/page-layout": "^1.0.6",
     "@atlaskit/side-navigation": "^1.2.1",
     "@atlaskit/tag": "^11.2.2",
-    "@atlaskit/tokens": "^0.4.1",
+    "@atlaskit/tokens": "^0.10.5",
     "@emotion/core": "^10.0.9",
     "@swc/helpers": "^0.3.2",
     "react": "^16.8.0",

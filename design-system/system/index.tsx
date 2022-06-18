@@ -21,10 +21,14 @@ export interface SystemProps {
 const debugStyle = css({
   position: 'relative',
   '::after': {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     boxSizing: 'border-box',
     textTransform: 'none',
+    fontWeight: 'bold',
     textAlign: 'center',
-    fontSize: '1.5rem',
+    fontSize: '1.4rem',
     lineHeight: 3,
     position: 'absolute',
     top: 0,
@@ -33,15 +37,16 @@ const debugStyle = css({
     height: '100%',
     content: `attr(data-debug)`,
     opacity: 0,
-    border: '2px dashed',
+    border: '2px solid',
   },
   ':focus': {
     outline: 'none',
     '::after': {
       zIndex: 2,
       opacity: 1,
-      color: token('utility.UNSAFE_util.MISSING_TOKEN'),
-      borderColor: token('utility.UNSAFE_util.MISSING_TOKEN'),
+      backgroundColor: token('color.background.blanket'),
+      color: token('color.text.onBold'),
+      borderColor: token('color.border.focus'),
     },
   },
 })

@@ -27,7 +27,7 @@ const Flex: FC<FlexProps> = ({
   gap,
   direction,
   as = 'div',
-  __debug,
+  __debug = 'Flex',
   justifyContent,
   alignItems,
 }) => {

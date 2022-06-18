@@ -14,10 +14,10 @@ type InlineProps = Pick<FlexProps, 'as'> & BaseProps
 const Inline: FC<InlineProps> = ({ children, space, align, as }) => {
   return (
     <Flex
+      __debug="Inline"
       direction="row"
       gap={space}
       alignItems={align}
-      __debug="Inline"
       as={as}
     >
       {children}

@@ -14,10 +14,10 @@ type DimensionProps = Pick<
 interface BoxProps extends DimensionProps, SystemProps {
   children?: ReactNode
   backgroundColor?: Color
-  color?: Color
   inset?: Spacing | [Spacing, Spacing]
   shadow?: Shadow
   borderStyle?: 'rounded' | 'circle'
+  borderColor?: keyof typeof borderColorMap
   // TODO Revisit?
   __style?: CSSProperties
 }
@@ -26,14 +26,21 @@ const baseStyles = css({
   boxSizing: 'border-box',
 })
 
+const borderColorMap = {
+  default: css({
+    borderColor: token('color.border.neutral'),
+  }),
+  focus: token('color.border.focus'),
+}
+
 const Box = forwardRef<HTMLElement, BoxProps>(
   (
     {
       as = 'div',
       backgroundColor,
-      color,
       inset,
       shadow,
+      borderColor,
       borderStyle,
       width,
       height,
@@ -43,6 +50,7 @@ const Box = forwardRef<HTMLElement, BoxProps>(
       maxWidth,
       testId,
       __style,
+      __debug = 'Box',
       ...props
     },
     ref
@@ -55,8 +63,8 @@ const Box = forwardRef<HTMLElement, BoxProps>(
           borderStyle &&
             css({ borderRadius: borderStyle === 'circle' ? '100%' : 3 }),
           shadow && css({ boxShadow: token(shadow) }),
-          color && css({ color: token(color) }),
           backgroundColor && css({ backgroundColor: token(backgroundColor) }),
+          borderColor && borderColorMap[borderColor],
           inset &&
             css({
               padding:
@@ -74,6 +82,7 @@ const Box = forwardRef<HTMLElement, BoxProps>(
           maxWidth,
           ...__style,
         }}
+        __debug={__debug}
         ref={ref}
         {...props}
       />
