@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { Card, Stack, Text, Flex, Inline } from '@ah/design-system'
+import { Card, Stack, Text, Inline, Heading } from '@ah/design-system'
 import { jsx } from '@emotion/core'
 
 import HighestPriority from '@atlaskit/icon-priority/glyph/priority-highest'
@@ -38,18 +38,18 @@ const IssueCard: FC<IssueCardProps> = ({
   const Priority = priorityIcons[priority]
   return (
     <Card>
-      <Stack space="small">
-        <Text>{children}</Text>
+      <Stack space="sp2x">
+        <Heading>{children}</Heading>
         {tags && (
-          <Inline space="base">
+          <Inline space="sp">
             {tags.map((tag) => {
               const hash = tag.charCodeAt(0) % tagColors.length
               return <SimpleTag color={tagColors[hash]} key={tag} text={tag} />
             })}
           </Inline>
         )}
-        <Flex justifyContent="space-between" alignItems="center">
-          <Inline space="base" align="center">
+        <Inline justifyContent="space-between" align="center">
+          <Inline space="sp" align="center">
             <Text
               size="xsmall"
               weight="bold"
@@ -60,11 +60,11 @@ const IssueCard: FC<IssueCardProps> = ({
               {ticket}
             </Text>
           </Inline>
-          <Inline space="base" align="center">
+          <Inline space="sp" align="center">
             <Priority label={priority} />
             <Avatar size="small" />
           </Inline>
-        </Flex>
+        </Inline>
       </Stack>
     </Card>
   )

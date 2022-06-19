@@ -11,7 +11,8 @@ const Card: FC = ({ children }) => {
       shadow="shadow.card"
       borderStyle="rounded"
       backgroundColor="color.background.card"
-      inset="small"
+      paddingBlock="sp2x"
+      paddingInline="sp2x"
     >
       {children}
     </Box>

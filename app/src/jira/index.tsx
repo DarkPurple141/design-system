@@ -49,7 +49,7 @@ const App = () => (
     <Content>
       <LeftSidebar>
         <SideNavigation label="Project navigation" testId="side-navigation">
-          <Box inset={['none', 'small-medium']}>
+          <Box paddingBlock="none" paddingInline="sp3x2">
             <NavigationHeader>
               <LinkItem
                 iconBefore={<Skeleton />}

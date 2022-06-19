@@ -16,14 +16,20 @@
     ]
   },
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=16.0.0"
   },
   "devDependencies": {
     "@atlaskit/eslint-plugin-design-system": "^4.0.1",
+    "@types/node": "^16.0.0",
     "@typescript-eslint/parser": "^5.8.0",
     "eslint": "^7",
     "eslint-plugin-prettier": "^4.0.0",
     "prettier": "^2.1.1",
     "typescript": "^4.0.0"
+  },
+  "alias": {
+    "process": {
+      "global": "process"
+    }
   }
 }

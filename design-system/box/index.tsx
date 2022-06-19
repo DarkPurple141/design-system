@@ -11,10 +11,11 @@ type DimensionProps = Pick<
   'width' | 'maxWidth' | 'minWidth' | 'height' | 'minHeight' | 'maxHeight'
 >
 
-interface BoxProps extends DimensionProps, SystemProps {
+export interface BoxProps extends DimensionProps, SystemProps {
   children?: ReactNode
   backgroundColor?: Color
-  inset?: Spacing | [Spacing, Spacing]
+  paddingInline?: Spacing
+  paddingBlock?: Spacing
   shadow?: Shadow
   borderStyle?: 'rounded' | 'circle'
   borderColor?: keyof typeof borderColorMap
@@ -23,6 +24,7 @@ interface BoxProps extends DimensionProps, SystemProps {
 }
 
 const baseStyles = css({
+  listStyle: 'none',
   boxSizing: 'border-box',
 })
 
@@ -33,12 +35,24 @@ const borderColorMap = {
   focus: token('color.border.focus'),
 }
 
+const generateSpacingStyleMap = (property: keyof CSSProperties) =>
+  Object.fromEntries(
+    (Object.keys(SPACING_SCALE) as Spacing[]).map((key) => [
+      key,
+      css({ [property]: SPACING_SCALE[key] }),
+    ])
+  )
+
+const paddingBlockMap = generateSpacingStyleMap('paddingBlock')
+const paddingInlineMap = generateSpacingStyleMap('paddingInline')
+
 const Box = forwardRef<HTMLElement, BoxProps>(
   (
     {
       as = 'div',
       backgroundColor,
-      inset,
+      paddingBlock,
+      paddingInline,
       shadow,
       borderColor,
       borderStyle,
@@ -65,13 +79,8 @@ const Box = forwardRef<HTMLElement, BoxProps>(
           shadow && css({ boxShadow: token(shadow) }),
           backgroundColor && css({ backgroundColor: token(backgroundColor) }),
           borderColor && borderColorMap[borderColor],
-          inset &&
-            css({
-              padding:
-                typeof inset === 'string'
-                  ? SPACING_SCALE[inset]
-                  : `${SPACING_SCALE[inset[0]]} ${SPACING_SCALE[inset[1]]}`,
-            }),
+          paddingInline && paddingInlineMap[paddingInline],
+          paddingBlock && paddingBlockMap[paddingBlock],
         ]}
         style={{
           width,
