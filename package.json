@@ -2,8 +2,8 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "lint": "eslint --ext .ts,.tsx app packages",
-    "format": "prettier --write --parser typescript \"{packages,app}/**/*.ts?(x)\"",
+    "lint": "eslint --ext .ts,.tsx app design-system",
+    "format": "prettier --write --parser typescript \"{design-system,app}/**/*.ts?(x)\"",
     "serve": "serve"
   },
   "lint-staged": {
